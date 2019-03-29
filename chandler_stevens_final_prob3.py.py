@@ -1,12 +1,10 @@
 quantity = int(input("Type and Enter how many heights will be entered: "))
-count = 0
 heightsSum = 0
 
-for count in range(quantity):
+for i in range(quantity):
     heightsSum += float(input("Type and Enter the height in meters: "))
-    count += 1
 
-print("The average height of all",quantity,"people is",(heightsSum/quantity),"meters.")
+print("The average height of all", quantity, "people is", (heightsSum/quantity), "meters.")
 
 ##height = 0
 ##sumHeights = 0

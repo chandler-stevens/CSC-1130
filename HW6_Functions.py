@@ -1,82 +1,52 @@
 #TODO1
-WELCOME =("Welcome to the GeoClac program!")
+name = input("Hello! What is your name?\n")
 
-def geoCalc(message) :
-    border = "="*50
-    print (border)
-    print ("Welcome", message +"!")
-    print (border)
+def borderedMessage(message):
+    border = "=" * 80
+    print(border)
+    print(message)
+    print(border)
 
-geoCalc("Welcome to the GeoClac program!")
+borderedMessage("Welcome, " + name + ", to the GeoCalc program!")
 
 #Optional: note how this input/while/string-conversion code is repeated later.
 # This is a good place to use a function, if you would like extra practice.
 #TODO2
-squareSideString = input("Please enter the side length for your 1st square: ")
+def requestNumber(message):
+    while True:
+        number = input(message)
+        try:
+            return float(number)
+        except ValueError:
+            print("INVALID INPUT\n")
 
-while not squareSideString.isdigit():
-    squareSideString = input("Please enter the side length for your 1st square: ")
+def requestSquareSide(n):
+    return requestNumber("Please enter the side length for square #" + str(n) + ":\n")
 
-squareSide = int(squareSideString)
+def calculateSquareArea(side):
+    return side ** 2
 
-def squareArea(sideLength) :
-    return (sideLength)**2
-
-firstSquareArea = squareArea(squareSide)
-
-
+firstSquareArea = calculateSquareArea(requestSquareSide(1))
 
 #TODO3
-squareSideString2 = input("Please enter the side length for your 1st square: ")
-
-while not squareSideString2.isdigit():
-    squareSideString2 = input("Please enter the side length for your 1st square: ")
-
-squareSide2 = int(squareSideString2)
-
-secondSquareArea = squareArea(squareSide2)
-
-
+secondSquareArea = calculateSquareArea(requestSquareSide(2))
 
 #TODO4
-triangleBaseString = input("Please enter the base for your 1st triangle: ")
+def requestTriangleBase(n):
+    return requestNumber("Please enter the base of triangle #" + str(n) + ":\n")
 
-while not triangleBaseString.isdigit():
-    triangleBaseString = input("Please enter the base for your 1st triangle: ")
-    
-triangleHeightString = input("Please enter the height for your 1st triangle: ")
+def requestTriangleHeight(n):
+    return requestNumber("Please enter the height of triangle #" + str(n) + ":\n")
 
-while not triangleHeightString.isdigit():
-    triangleHeightString = input("Please enter the height for your 1st triangle: ")
+def calculateTriangleArea(base, height):
+    return base * height / 2
 
-triangleBase = float(triangleBaseString)
-triangleHeight = float(triangleHeightString)
-
-def triangleArea(base,height) :
-    return (base * height / 2)
-firstTriangleArea = triangleArea(triangleBase, triangleHeight)
-
-
+firstTriangleArea = calculateTriangleArea(requestTriangleBase(1), requestTriangleHeight(1))
 
 #TODO5
+secondTriangleArea = calculateTriangleArea(requestTriangleBase(2), requestTriangleHeight(2))
 
-triangleBaseString2 = input("Please enter the base for your 2nd triangle: ")
-
-while not triangleBaseString2.isdigit():
-    triangleBaseString2 = input("Please enter the base for your 2nd triangle: ")
-    
-triangleHeightString2 = input("Please enter the height for your 2nd triangle: ")
-
-while not triangleHeightString2.isdigit():
-    triangleHeightString2 = input("Please enter the height for your 2nd triangle: ")
-
-triangleBase2 = float(triangleBaseString2)
-triangleHeight2 = float(triangleHeightString2)
-
-secondTriangleArea = triangleArea(triangleBase2, triangleHeight2)
-
-
-#print results
+#Print results
 print()
 print("Your first square area is :", firstSquareArea)
 print("Your second square area is :", secondSquareArea)
@@ -85,7 +55,4 @@ print("Your second triangle area is :", secondTriangleArea)
 print()
 
 #TODO6
-
-geoCalc("Goodbye, thank you for using the GeoCalc program!") 
-
-
+borderedMessage("Goodbye, " + name + ", thank you for using the GeoCalc program!") 
